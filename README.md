@@ -8,6 +8,7 @@
 
 📍 Ajman, UAE
 
+[![Website](https://img.shields.io/badge/Website-Live-1e1b4b?style=flat-square&logo=github)](https://scholarlybrightminds.github.io/rahafalzeer/)
 [![Google Scholar](https://img.shields.io/badge/Google%20Scholar-uy--28F0AAAAJ-4285F4?style=flat-square&logo=google-scholar&logoColor=white)](https://scholar.google.com/citations?user=uy-28F0AAAAJ&hl=en)
 [![ORCID](https://img.shields.io/badge/ORCID-0009--0004--1752--3171-A6CE39?style=flat-square&logo=orcid&logoColor=white)](https://orcid.org/0009-0004-1752-3171)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-rahaf--al--zeer-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rahaf-al-zeer-7093391ba)
