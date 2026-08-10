@@ -96,7 +96,7 @@
             <div class="footer-left">
                 <div>${C.identity.fullName} · ${C.identity.location} · © ${C.footer.copyrightYear}</div>
                 <div class="colophon">
-                    ${C.footer.tagline} Fraunces · Manrope · JetBrains Mono. ${C.footer.credits}
+                    ${C.footer.tagline} Set in Cormorant Garamond, EB Garamond &amp; JetBrains Mono. ${C.footer.credits}
                 </div>
             </div>
             <div class="footer-links">${links}</div>
@@ -341,9 +341,9 @@
         if (!C.blog || C.blog.length === 0) {
             el.innerHTML = `
                 <div class="blog-empty">
-                    <p class="blog-empty-icon">📝</p>
+                    <span class="blog-empty-icon" aria-hidden="true">${ICONS.document}</span>
                     <h3 class="blog-empty-title">Nothing here yet.</h3>
-                    <p class="blog-empty-desc">Writing takes time. Check back soon — or follow my research on <a href="${C.social.find(s=>s.key==='scholar')?.url || '#'}" target="_blank" rel="noopener">Google Scholar</a>.</p>
+                    <p class="blog-empty-desc">Writing takes time. Check back soon, or follow my research on <a href="${C.social.find(s=>s.key==='scholar')?.url || '#'}" target="_blank" rel="noopener">Google Scholar</a>.</p>
                 </div>
             `;
             return;

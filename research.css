@@ -1,171 +1,139 @@
 /* ═══════════════════════════════════════════════════════════════════
-   research.css — Research statement / vision page
+   research.css · Research statement / vision page
+   The statement reads as a set essay: a large italic opening,
+   hairline-framed sections, and the OpenAlex concept map restyled
+   as a numbered plate. rm-* classes are baked weekly; keep names.
    ═══════════════════════════════════════════════════════════════════ */
 
-.sub-hero .sub-lede {
-    max-width: 640px;
-    margin-top: 1.2rem;
-    font-size: 1rem;
-    color: var(--text-soft);
-    line-height: 1.7;
-}
-
-/* ─── Intro paragraph block ────────────────────────────────────── */
+/* ─── Opening pull-quote ────────────────────────────────────────── */
 .research-intro {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--accent);
-    border-radius: var(--radius);
-    padding: 1.6rem 1.9rem 1.7rem;
-    margin: 1rem 0 0;
+    margin: 2.6rem 0 0;
+    padding: 0 0 0 1.8rem;
+    border-left: 2px solid var(--accent);
     position: relative;
 }
 .research-intro-body {
     font-family: var(--display);
     font-style: italic;
-    font-weight: 300;
-    font-size: 1.1rem;
-    color: var(--text-soft);
-    line-height: 1.65;
+    font-weight: 500;
+    font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+    color: var(--text);
+    line-height: 1.5;
     margin: 0;
-    max-width: 760px;
+    max-width: 820px;
+    padding-bottom: 0.1em;
 }
 
-/* ─── Research statement section cards ─────────────────────────── */
+/* ─── Statement sections ────────────────────────────────────────── */
 .research-sections {
     display: flex;
     flex-direction: column;
-    gap: 1.6rem;
 }
 
 .research-block {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.9rem 2.1rem 2rem;
+    padding: 2.6rem 0 2.5rem;
     position: relative;
-    overflow: hidden;
-    transition: border-color .25s var(--ease), box-shadow .25s var(--ease);
+    max-width: 860px;
 }
-.research-block::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 2px;
-    background: var(--accent);
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: transform .35s var(--ease);
-}
-.research-block:hover {
-    border-color: var(--accent);
-    box-shadow: var(--shadow-card);
-}
-.research-block:hover::before { transform: scaleY(1); }
+.research-block + .research-block { border-top: 1px solid var(--border-s); }
 
-.research-block .sec-kicker {
-    margin-bottom: 0.4rem;
-}
+.research-block .sec-kicker { margin-bottom: 0.35rem; }
 .research-block-title {
     font-family: var(--display);
-    font-size: clamp(1.4rem, 2.4vw, 1.7rem);
-    font-weight: 400;
-    line-height: 1.25;
+    font-size: clamp(1.6rem, 2.8vw, 2.05rem);
+    font-weight: 600;
+    line-height: 1.18;
     letter-spacing: -0.01em;
     color: var(--text);
-    margin: 0 0 1rem;
+    margin: 0 0 1.1rem;
+    padding-bottom: 0.06em;
 }
 .research-block-body {
     color: var(--text-soft);
-    font-size: 0.98rem;
+    font-size: var(--fs-body);
     line-height: 1.78;
     max-width: 760px;
 }
-.research-block-body p { margin: 0 0 1rem; }
+.research-block-body p { margin: 0 0 1.05rem; }
 .research-block-body p:last-child { margin-bottom: 0; }
 .research-block-body strong { color: var(--text); font-weight: 600; }
-.research-block-body em      { color: var(--text); font-style: italic; }
+.research-block-body em     { color: var(--text); font-style: italic; }
 .research-block-body a {
     color: var(--accent);
     text-decoration: none;
-    border-bottom: 1px dotted var(--accent-glow);
-    transition: color .2s;
+    border-bottom: 1px solid var(--accent-glow);
+    transition: color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
 }
-.research-block-body a:hover { color: var(--accent-d); }
+.research-block-body a:hover { color: var(--accent-d); border-color: var(--accent); }
 
 /* ─── Final CTA ───────────────────────────────────────────────── */
 .research-final {
-    background: linear-gradient(180deg, var(--card) 0%, var(--card-soft) 100%);
-    border: 1px solid var(--accent-glow);
+    border: 1px solid var(--border-s);
     border-radius: var(--radius);
-    padding: 2rem 2.2rem 2.1rem;
+    background:
+        radial-gradient(80% 130% at 90% 0%, var(--halo), transparent 60%),
+        var(--card-soft);
+    padding: 2.4rem 2.6rem 2.5rem;
 }
 .research-final-body {
     color: var(--text-soft);
-    font-size: 0.96rem;
+    font-size: var(--fs-body);
     line-height: 1.7;
     max-width: 620px;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.5rem;
 }
 .research-final-cta {
     display: inline-flex;
     align-items: center;
     gap: 0.55rem;
-    padding: 0.78rem 1.4rem;
+    padding: 0.8rem 1.6rem;
     border-radius: 999px;
     background: var(--accent);
     color: var(--bg);
     border: 1px solid var(--accent);
-    font-family: var(--body);
-    font-size: 0.9rem;
+    font-family: var(--serif);
+    font-size: 1.05rem;
     font-weight: 600;
     text-decoration: none;
-    transition: all .25s var(--ease);
+    transition: background-color var(--t-fast) var(--ease),
+                border-color var(--t-fast) var(--ease),
+                transform var(--t-fast) var(--ease),
+                box-shadow var(--t-fast) var(--ease);
 }
-.research-final-cta svg {
-    width: 16px;
-    height: 16px;
-}
+.research-final-cta svg { width: 16px; height: 16px; }
 .research-final-cta:hover {
     background: var(--accent-d);
     border-color: var(--accent-d);
     transform: translateY(-2px);
-    box-shadow: 0 14px 28px -10px var(--accent-glow);
+    box-shadow: 0 14px 28px -12px var(--accent-glow);
 }
+.research-final-cta:active { transform: translateY(0) scale(0.98); }
 .research-final-sub {
-    margin: 1.3rem 0 0;
-    font-size: 0.84rem;
+    margin: 1.4rem 0 0;
+    font-size: 0.95rem;
     color: var(--text-soft);
 }
 .research-final-sub a {
     color: var(--accent);
     text-decoration: none;
-    border-bottom: 1px dotted var(--accent-glow);
+    border-bottom: 1px solid var(--accent-glow);
+    transition: color var(--t-fast) var(--ease);
 }
-.research-final-sub a:hover { color: var(--accent-d, var(--accent)); }
+.research-final-sub a:hover { color: var(--accent-d); }
 
-/* ─── Research-map (interactive concept graph) ──────────────────
-   Force-directed SVG of top-level concepts + topics from OpenAlex.
-   Server-baked static layout (works without JS for SEO + a11y);
-   research-map.js runs a spring simulation on top for the settling
-   motion + hover/drag. */
+/* ─── Research map · Fig-style concept plate ────────────────────
+   Server-baked static SVG layout (SEO + no-JS safe); research-map.js
+   adds the settling spring motion and hover focus on top. */
 .research-map {
-    background: var(--card);
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-s);
     border-radius: var(--radius);
-    padding: 2rem 2.2rem 1.4rem;
-    margin: 1.5rem 0 0;
+    background:
+        radial-gradient(90% 120% at 12% 0%, var(--halo), transparent 55%),
+        var(--card-soft);
+    padding: 2.2rem 2.4rem 1.8rem;
+    margin: 2.2rem 0 0;
     position: relative;
     overflow: hidden;
-}
-.research-map::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(60% 70% at 20% 20%, rgba(255,184,77,0.07), transparent 60%),
-        radial-gradient(50% 60% at 80% 80%, rgba(120,200,180,0.05), transparent 60%);
-    pointer-events: none;
 }
 .research-map .sec-kicker,
 .research-map .sec-title,
@@ -175,20 +143,23 @@
 }
 .research-map-lede {
     color: var(--text-soft);
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     line-height: 1.65;
     max-width: 720px;
-    margin: 0.7rem 0 1.2rem;
+    margin: 0.5rem 0 1.4rem;
 }
 .research-map-canvas {
     position: relative;
     z-index: 1;
     width: 100%;
     aspect-ratio: 1000 / 560;
-    border-radius: 14px;
-    background: linear-gradient(180deg,
-        rgba(0,0,0,0.18) 0%,
-        rgba(0,0,0,0.05) 100%);
+    border-radius: var(--radius-s);
+    border: 1px solid var(--border-s);
+    background-image:
+        linear-gradient(var(--border-s) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border-s) 1px, transparent 1px);
+    background-size: 56px 56px;
+    background-position: center;
     overflow: hidden;
 }
 .research-map-svg {
@@ -203,38 +174,40 @@
 /* Edges */
 .rm-edges { pointer-events: none; }
 .rm-edge {
-    stroke: rgba(255,184,77,0.30);
+    stroke: var(--accent);
+    stroke-opacity: 0.3;
     stroke-linecap: round;
-    transition: stroke .2s, stroke-width .2s, opacity .2s;
+    transition: stroke-opacity var(--t-fast) var(--ease), opacity var(--t-fast) var(--ease);
 }
 .rm-edge--focus {
     stroke: var(--accent);
+    stroke-opacity: 1;
     stroke-width: 1.8 !important;
     opacity: 1;
 }
-.rm-edge--dim { opacity: 0.18; }
+.rm-edge--dim { opacity: 0.15; }
 
 /* Nodes */
 .rm-node {
     cursor: pointer;
-    transition: opacity .25s var(--ease);
+    transition: opacity var(--t-med) var(--ease);
 }
-.rm-node--dim { opacity: 0.35; }
+.rm-node--dim { opacity: 0.32; }
 .rm-node--focus .rm-node-disc {
     filter: drop-shadow(0 0 14px var(--accent-glow));
 }
 .rm-node--dragging { cursor: grabbing; }
 
 .rm-node-disc {
-    fill: var(--card-soft, #1a2622);
-    stroke: var(--border, rgba(255,184,77,0.22));
+    fill: var(--card);
+    stroke: var(--border);
     stroke-width: 1.4;
-    transition: fill .2s, stroke .2s;
+    transition: fill var(--t-fast) var(--ease), stroke var(--t-fast) var(--ease);
 }
 .rm-node-label {
     fill: var(--text);
-    font-family: var(--body);
-    font-size: 11.5px;
+    font-family: var(--serif);
+    font-size: 12px;
     font-weight: 500;
     letter-spacing: 0.1px;
     pointer-events: none;
@@ -245,47 +218,41 @@
     stroke: var(--accent);
 }
 .rm-node--center .rm-node-label {
-    fill: var(--bg, #0d1411);
-    font-size: 12.5px;
-    font-weight: 700;
+    fill: var(--bg);
+    font-size: 13px;
+    font-weight: 600;
 }
 .rm-node--concept .rm-node-disc {
-    fill: rgba(255,184,77,0.14);
-    stroke: rgba(255,184,77,0.55);
+    fill: var(--amber-bg);
+    stroke: var(--amber-glow);
 }
 .rm-node--concept .rm-node-label {
-    font-size: 12px;
+    font-size: 12.5px;
     font-weight: 600;
-    fill: var(--accent);
+    fill: var(--amber);
 }
 .rm-node--topic .rm-node-disc {
-    fill: rgba(120,200,180,0.10);
-    stroke: rgba(120,200,180,0.50);
+    fill: var(--accent-bg);
+    stroke: var(--accent-glow);
 }
 .rm-node--topic .rm-node-label {
-    font-size: 10.5px;
+    font-size: 11px;
     fill: var(--text-soft);
 }
 
 .rm-node:hover .rm-node-disc,
-.rm-node:focus .rm-node-disc {
-    stroke-width: 2.2;
-}
-.rm-node--focus.rm-node--concept .rm-node-disc {
-    fill: rgba(255,184,77,0.28);
-}
-.rm-node--focus.rm-node--topic .rm-node-disc {
-    fill: rgba(120,200,180,0.22);
-}
+.rm-node:focus .rm-node-disc { stroke-width: 2.2; }
+.rm-node--focus.rm-node--concept .rm-node-disc { fill: var(--amber-glow); }
+.rm-node--focus.rm-node--topic   .rm-node-disc { fill: var(--accent-glow); }
 
 /* ─── Responsive ───────────────────────────────────────────────── */
 @media (max-width: 640px) {
-    .research-block { padding: 1.5rem 1.6rem; }
-    .research-intro { padding: 1.3rem 1.5rem; }
-    .research-final { padding: 1.5rem 1.6rem; }
-    .research-map   { padding: 1.4rem 1.4rem 1rem; }
+    .research-block { padding: 1.9rem 0 1.8rem; }
+    .research-intro { padding-left: 1.2rem; }
+    .research-final { padding: 1.7rem 1.5rem 1.8rem; }
+    .research-map   { padding: 1.4rem 1.2rem 1.1rem; }
     .rm-node-label  { font-size: 9.5px; }
-    .rm-node--center .rm-node-label { font-size: 10.5px; }
+    .rm-node--center .rm-node-label  { font-size: 10.5px; }
     .rm-node--concept .rm-node-label { font-size: 10px; }
     .rm-node--topic .rm-node-label   { font-size: 8.5px; }
 }

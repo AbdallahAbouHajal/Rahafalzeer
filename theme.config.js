@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════════════════════
-//  theme.config.js — Rahaf Adnan Al-Zeer
+//  theme.config.js, Rahaf Adnan Al-Zeer
 //  Single source of truth for this researcher's site.
 //  To port to another researcher: clone the repo, swap THIS FILE,
 //  change SCHOLAR_AUTHOR_ID in .github/workflows/serpapi-monthly.yml,
@@ -27,48 +27,54 @@ window.SITE_CONFIG = {
     },
 
     // ── Palette ───────────────────────────────────────────────────
-    // Light pink theme. Applied to CSS variables at runtime.
+    // Garnet rose. Dark mode: warm near-black with a luminous rose accent.
+    // Light mode: warm ivory with a deep burgundy accent. Gold stays the
+    // award color. Applied to CSS variables at runtime by the applier below.
     palette: {
         name: "rose",
         // Dark mode (default)
         dark: {
-            bg:          "#1B0A12",
-            bgSoft:      "#200D15",
-            bgDeep:      "#140509",
-            card:        "#2A1020",
-            cardSoft:    "#231018",
-            text:        "#FFE4F0",
-            textSoft:    "#CF94B0",
-            muted:       "#8A5570",
-            border:      "#4A1A2E",
-            borderS:     "#38121F",
-            accent:      "#F48FB1",
-            accentD:     "#F8BBD9",
-            accentBg:    "rgba(244,143,177,0.12)",
-            accentGlow:  "rgba(244,143,177,0.22)",
-            amber:       "#FFAB76",
-            amberBg:     "rgba(255,171,118,0.12)",
-            amberGlow:   "rgba(255,171,118,0.20)"
+            bg:          "#1A1114",
+            bgSoft:      "#211519",
+            bgDeep:      "#130B0E",
+            card:        "#231519",
+            cardSoft:    "#1E1216",
+            text:        "#F4E9E4",
+            textSoft:    "#C8A9A5",
+            muted:       "#99787E",
+            border:      "#3B252B",
+            borderS:     "#2C1B20",
+            accent:      "#E7929F",
+            accentD:     "#F2B2BB",
+            accentBg:    "rgba(231,146,159,0.10)",
+            accentGlow:  "rgba(231,146,159,0.22)",
+            amber:       "#D9A85C",
+            amberBg:     "rgba(217,168,92,0.10)",
+            amberGlow:   "rgba(217,168,92,0.22)",
+            wine:        "#7C2F44",
+            halo:        "rgba(231,146,159,0.06)"
         },
         // Light mode
         light: {
-            bg:          "#FFF5F7",
-            bgSoft:      "#FFEEF3",
-            bgDeep:      "#FFE4EE",
-            card:        "#FFFFFF",
-            cardSoft:    "#FFF8FB",
-            text:        "#2D1520",
-            textSoft:    "#5A2535",
-            muted:       "#9E6070",
-            border:      "#F7C5D5",
-            borderS:     "#FDDDE8",
-            accent:      "#C2185B",
-            accentD:     "#880E4F",
-            accentBg:    "#FCE4EC",
-            accentGlow:  "rgba(194,24,91,0.14)",
-            amber:       "#C77700",
-            amberBg:     "#FFF3CD",
-            amberGlow:   "rgba(199,119,0,0.14)"
+            bg:          "#FBF4EE",
+            bgSoft:      "#F5EAE3",
+            bgDeep:      "#EFE1D9",
+            card:        "#FEFBF7",
+            cardSoft:    "#F7EDE7",
+            text:        "#2E1A20",
+            textSoft:    "#6B4A51",
+            muted:       "#876670",
+            border:      "#E6D3CC",
+            borderS:     "#EFE0DA",
+            accent:      "#8E2F47",
+            accentD:     "#6B2036",
+            accentBg:    "rgba(142,47,71,0.08)",
+            accentGlow:  "rgba(142,47,71,0.16)",
+            amber:       "#996414",
+            amberBg:     "rgba(153,100,20,0.10)",
+            amberGlow:   "rgba(153,100,20,0.18)",
+            wine:        "#7C2440",
+            halo:        "rgba(142,47,71,0.05)"
         }
     },
 
@@ -100,7 +106,7 @@ window.SITE_CONFIG = {
     // step in the SerpApi workflow replaces the first chip with live numbers
     // (e.g., "1 Publication · 15 Citations") right before each commit.
     chips: [
-        { label: "4 Publications · 47 Citations" },
+        { label: "4 Publications · 54 Citations" },
         { label: "h-index 2" },
         { label: "🥇 1st Place Oral · AAU 2026", variant: "gold" },
         { label: "AACR Member" },
@@ -226,12 +232,12 @@ window.SITE_CONFIG = {
         ],
 
         timeline: [
-            { date: "2020 – 2024",          title: "Bachelor of Pharmacy (B.Pharm)",              desc: "Dubai Medical University, Dubai, UAE · CGPA 3.71/4.0, Excellent." },
-            { date: "Jul 2023",             title: "Research Training Visitor",                    desc: "Al-Zaytoonah University of Jordan · supervised by Dr. Mohammad Alwahsh · qPCR, RNA extraction, cell culture." },
-            { date: "May 2024 – Jan 2025",  title: "Research Assistant (Part-Time)",               desc: "University of Sharjah, UAE · nanomedicine, drug delivery, pharmacological screening." },
-            { date: "Aug 2024 – Present",   title: "Graduate Teaching Assistant",                  desc: "Department of Pharmaceutical Sciences, Gulf Medical University · pharmacology, sterile compounding, biomedical assays.", state: "current" },
-            { date: "Aug 2024 – Present",   title: "Programme Leader, Mentorship Programme",       desc: "Student Happiness Centre, Gulf Medical University · university-wide student mentorship initiative.", state: "current" },
-            { date: "2024 – Jul 2026",      title: "MSc in Drug Discovery &amp; Development",      desc: "Gulf Medical University, Ajman · CGPA 3.9/4.0 · Defence: July 2026, inshallah.", state: "current" },
+            { date: "2020 to 2024",          title: "Bachelor of Pharmacy (B.Pharm)",              desc: "Dubai Medical University, Dubai, UAE · CGPA 3.71/4.0, Excellent." },
+            { date: "Jul 2023",              title: "Research Training Visitor",                    desc: "Al-Zaytoonah University of Jordan · supervised by Dr. Mohammad Alwahsh · qPCR, RNA extraction, cell culture." },
+            { date: "May 2024 to Jan 2025",  title: "Research Assistant (Part-Time)",               desc: "University of Sharjah, UAE · nanomedicine, drug delivery, pharmacological screening." },
+            { date: "Aug 2024 to Present",   title: "Graduate Teaching Assistant",                  desc: "Department of Pharmaceutical Sciences, Gulf Medical University · pharmacology, sterile compounding, biomedical assays.", state: "current" },
+            { date: "Aug 2024 to Present",   title: "Programme Leader, Mentorship Programme",       desc: "Student Happiness Centre, Gulf Medical University · university-wide student mentorship initiative.", state: "current" },
+            { date: "2024 to Jul 2026",      title: "MSc in Drug Discovery &amp; Development",      desc: "Gulf Medical University, Ajman · CGPA 3.9/4.0 · Defence: July 2026, inshallah.", state: "current" },
             { date: "Feb 2026",             title: "🥇 1st Place, Oral Presentation",              desc: "4th Al Ain University Postgraduate Symposium, Abu Dhabi · Public Health &amp; Biomedical Sciences.", state: "current" },
             { date: "Next · PhD",           title: "Actively seeking a position",                  desc: "Molecular pharmacology, targeted drug delivery, translational cancer biology. Open to strong groups worldwide.", state: "future" }
         ],
@@ -348,7 +354,7 @@ window.SITE_CONFIG = {
 
     // ── Research statement / vision (research.html) ──────────────
     // Each block becomes its own card-style section. Keep the
-    // narrative load-bearing — supervisors actually read this.
+    // narrative load-bearing, supervisors actually read this.
     research: {
         kicker: "Research statement",
         h1Front:  "Where I want to take",

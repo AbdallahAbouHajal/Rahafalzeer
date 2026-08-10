@@ -1,60 +1,38 @@
 /* ═══════════════════════════════════════════════════════════════════
-   projects.css — Ongoing Research page specifics
+   projects.css · Ongoing Research page
+   A numbered ledger: large italic numerals in the margin, hairline
+   separations, mono status notes. Markup emitted by scripts.js.
    ═══════════════════════════════════════════════════════════════════ */
-
-.sub-hero .sub-lede {
-    max-width: 620px;
-    margin-top: 1.2rem;
-    font-size: 1rem;
-    color: var(--text-soft);
-    line-height: 1.7;
-}
 
 .project-list {
     display: flex;
     flex-direction: column;
-    gap: 1.3rem;
 }
 
 .proj-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 2rem 2.2rem;
+    padding: 2.5rem 0 2.4rem;
     display: grid;
-    grid-template-columns: 68px 1fr;
-    gap: 1.5rem;
+    grid-template-columns: 96px 1fr;
+    gap: 1.8rem;
     align-items: start;
     position: relative;
-    overflow: hidden;
-    transition: transform .25s var(--ease), border-color .25s var(--ease), box-shadow .25s var(--ease);
 }
-.proj-card::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 2px;
-    background: var(--accent);
-    transform: scaleY(0);
-    transform-origin: center;
-    transition: transform .3s var(--ease);
-}
-.proj-card:hover {
-    transform: translateY(-3px);
-    border-color: var(--accent);
-    box-shadow: var(--shadow-card);
-}
-.proj-card:hover::before { transform: scaleY(1); }
+.proj-card + .proj-card { border-top: 1px solid var(--border-s); }
 
 .proj-num {
     font-family: var(--display);
-    font-size: 2.8rem;
-    font-weight: 300;
+    font-size: 3.1rem;
+    font-weight: 500;
     font-style: italic;
-    color: var(--accent);
-    line-height: 1;
+    color: var(--accent-glow);
+    line-height: 0.9;
     letter-spacing: -0.02em;
+    transition: color var(--t-med) var(--ease);
+    padding-top: 0.3rem;
 }
+.proj-card:hover .proj-num { color: var(--accent); }
+.proj-card--published .proj-num { color: var(--amber-glow); }
+.proj-card--published:hover .proj-num { color: var(--amber); }
 
 .proj-body { min-width: 0; }
 
@@ -62,207 +40,197 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0.55rem;
-    margin-bottom: 0.7rem;
+    gap: 0.55rem 1rem;
+    margin-bottom: 0.8rem;
 }
 .proj-label {
     font-family: var(--mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.18em;
+    font-size: 0.64rem;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--accent);
-    background: var(--accent-bg);
-    border: 1px solid var(--accent-glow);
-    padding: 0.22rem 0.55rem;
-    border-radius: 0.3rem;
 }
 .proj-status {
     font-family: var(--mono);
-    font-size: 0.64rem;
-    letter-spacing: 0.14em;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    padding: 0.25rem 0.6rem;
-    border-radius: 0.35rem;
+    padding: 0.28rem 0.7rem;
+    border-radius: 999px;
     border: 1px solid var(--border);
-    background: var(--bg-soft);
+    background: transparent;
     color: var(--text-soft);
     line-height: 1.3;
 }
-/* Status variants — green-ish for published, amber for active, accent for in-review */
 .proj-status--published {
-    color: #7dbf8f;
-    border-color: rgba(125, 191, 143, 0.25);
-    background: rgba(125, 191, 143, 0.08);
-}
-:root[data-theme="light"] .proj-status--published {
-    color: #2e7a44;
-    border-color: rgba(46, 122, 68, 0.25);
-    background: rgba(46, 122, 68, 0.08);
-}
-.proj-status--active {
     color: var(--amber);
     border-color: var(--amber-glow);
     background: var(--amber-bg);
 }
-.proj-status--review {
+.proj-status--active {
     color: var(--accent);
     border-color: var(--accent-glow);
     background: var(--accent-bg);
 }
+.proj-status--review {
+    color: var(--text-soft);
+    border-color: var(--border);
+    background: var(--bg-soft);
+}
 
-/* Subtle left-border variant hint on the whole card */
-.proj-card--published::before { background: #7dbf8f; }
-:root[data-theme="light"] .proj-card--published::before { background: #2e7a44; }
-.proj-card--active::before    { background: var(--amber); }
+.proj-venue {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 0.98rem;
+    color: var(--muted);
+}
 
-/* Needs line — what this project needs right now */
+.proj-title {
+    font-family: var(--display);
+    font-size: clamp(1.5rem, 2.6vw, 1.9rem);
+    font-weight: 600;
+    line-height: 1.22;
+    letter-spacing: -0.008em;
+    margin-bottom: 0.6rem;
+    color: var(--text);
+    max-width: 760px;
+    padding-bottom: 0.05em;
+}
+.proj-desc {
+    color: var(--text-soft);
+    font-size: var(--fs-body);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    max-width: 680px;
+}
+
+/* Needs line: what this project is looking for right now */
 .proj-needs {
     margin: 0 0 1rem 0;
-    padding: 0.7rem 0.9rem;
-    background: var(--bg-soft);
-    border: 1px dashed var(--border);
-    border-radius: var(--radius-s);
-    font-size: 0.86rem;
+    padding: 0.2rem 0 0.2rem 1rem;
+    border-left: 2px solid var(--amber);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 0.98rem;
     color: var(--text-soft);
-    line-height: 1.55;
-    max-width: 620px;
+    line-height: 1.6;
+    max-width: 640px;
 }
 .proj-needs-label {
     font-family: var(--mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.14em;
+    font-style: normal;
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--amber);
     margin-right: 0.4rem;
 }
 
-/* Actions row holds both the "Read paper" button (for published projects)
-   and the "Want to collaborate?" button (for active projects). */
+.proj-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0;
+    max-width: 680px;
+}
+.proj-tag {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    padding: 0.18rem 0.9rem 0.18rem 0;
+    transition: color var(--t-fast) var(--ease);
+}
+.proj-tag + .proj-tag {
+    border-left: 1px solid var(--border);
+    padding-left: 0.9rem;
+}
+.proj-card:hover .proj-tag { color: var(--text-soft); }
+
+/* Actions: Read paper (primary when published) + collaborate */
 .proj-actions {
     display: flex;
     gap: 0.6rem;
     flex-wrap: wrap;
-    margin-top: 1rem;
+    margin-top: 1.2rem;
     align-items: center;
 }
-
-/* Venue chip — published projects get a journal-name pill next to status */
-.proj-venue {
-    font-family: var(--display);
-    font-style: italic;
-    font-size: 0.85rem;
-    color: var(--text-soft);
-    padding-left: 0.4rem;
-    border-left: 1px solid var(--border);
-}
-
-/* Read-paper button (DOI link) */
 .proj-paper {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.55rem 1rem;
-    font-family: var(--body);
-    font-size: 0.84rem;
-    font-weight: 500;
+    padding: 0.6rem 1.2rem;
+    font-family: var(--serif);
+    font-size: 0.98rem;
+    font-weight: 600;
     color: var(--bg);
     background: var(--accent);
     border: 1px solid var(--accent);
     border-radius: 999px;
     text-decoration: none;
-    transition: all .25s var(--ease);
+    transition: background-color var(--t-fast) var(--ease),
+                border-color var(--t-fast) var(--ease),
+                transform var(--t-fast) var(--ease),
+                box-shadow var(--t-fast) var(--ease);
 }
 .proj-paper:hover {
     background: var(--accent-d);
     border-color: var(--accent-d);
     transform: translateY(-2px);
-    box-shadow: 0 12px 26px -10px var(--accent-glow);
+    box-shadow: 0 12px 26px -12px var(--accent-glow);
 }
+.proj-paper:active { transform: translateY(0) scale(0.98); }
 .proj-paper-icon {
-    font-size: 0.95em;
+    font-size: 0.9em;
     transform: translateY(-1px);
     display: inline-block;
 }
 .proj-paper-doi {
     font-family: var(--mono);
-    font-size: 0.7rem;
-    opacity: 0.78;
-    padding-left: 0.5rem;
+    font-size: 0.64rem;
+    letter-spacing: 0.03em;
+    opacity: 0.8;
+    padding-left: 0.55rem;
     margin-left: 0.2rem;
-    border-left: 1px solid rgba(0,0,0,0.18);
+    border-left: 1px solid currentColor;
 }
 
-/* Collaborate button */
 .proj-collab {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.55rem 1rem;
-    font-family: var(--body);
-    font-size: 0.84rem;
+    padding: 0.6rem 1.2rem;
+    font-family: var(--serif);
+    font-size: 0.98rem;
     font-weight: 500;
     color: var(--accent);
-    background: var(--accent-bg);
+    background: transparent;
     border: 1px solid var(--accent-glow);
     border-radius: 999px;
     text-decoration: none;
-    transition: all .25s var(--ease);
+    transition: color var(--t-fast) var(--ease),
+                background-color var(--t-fast) var(--ease),
+                border-color var(--t-fast) var(--ease),
+                transform var(--t-fast) var(--ease);
 }
 .proj-collab:hover {
-    background: var(--accent);
-    color: var(--card);
+    background: var(--accent-bg);
+    border-color: var(--accent);
     transform: translateY(-2px);
-    box-shadow: 0 8px 22px -10px var(--accent-glow);
 }
+.proj-collab:active { transform: translateY(0) scale(0.98); }
 .proj-collab-icon {
     font-size: 0.95em;
     display: inline-block;
     transform: translateY(-1px);
 }
 
-.proj-title {
-    font-family: var(--display);
-    font-size: 1.4rem;
-    font-weight: 400;
-    line-height: 1.3;
-    letter-spacing: -0.005em;
-    margin-bottom: 0.55rem;
-    color: var(--text);
-}
-.proj-desc {
-    color: var(--text-soft);
-    font-size: 0.94rem;
-    line-height: 1.7;
-    margin-bottom: 1rem;
-    max-width: 620px;
-}
-
-.proj-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-}
-.proj-tag {
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    background: var(--bg-soft);
-    border: 1px solid var(--border);
-    color: var(--text-soft);
-    padding: 0.25rem 0.6rem;
-    border-radius: 0.35rem;
-    transition: all .2s var(--ease);
-}
-.proj-card:hover .proj-tag {
-    border-color: var(--accent-glow);
-}
-
 /* ── Responsive ─────────────────────────────────────────────────── */
 @media (max-width: 640px) {
     .proj-card {
-        grid-template-columns: auto 1fr;
-        gap: 1rem;
-        padding: 1.4rem 1.5rem;
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+        padding: 1.8rem 0 1.7rem;
     }
-    .proj-num { font-size: 2.2rem; }
-    .proj-title { font-size: 1.2rem; }
+    .proj-num { font-size: 2rem; padding-top: 0; }
+    .proj-title { font-size: 1.35rem; }
 }
