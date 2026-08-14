@@ -415,6 +415,51 @@ main {
     box-shadow: var(--shadow-card);
 }
 
+/* Competitive antagonism, drawn once. On load a garnet agonist trace
+   inks itself around the offset frame; a pale antagonist then displaces
+   it along a Hill-shaped occupancy curve and the frame settles for the
+   rest of the session, ending on the exact accent-glow tone the static
+   frame above has always used. The ring is a conic gradient carved to a
+   1px band by a mask, which follows the frame's border-radius the way
+   border-image never can. Reduced motion and older browsers keep the
+   static rule above. Site-wide freeze: --sbm-anim: paused on :root. */
+@property --ago {
+    syntax: "<percentage>";
+    initial-value: 0%;
+    inherits: false;
+}
+@property --ant {
+    syntax: "<percentage>";
+    initial-value: 0%;
+    inherits: false;
+}
+@media (prefers-reduced-motion: no-preference) {
+    .hero-image::before {
+        border: 0;
+        padding: 1px;
+        background: conic-gradient(
+            var(--accent-glow) 0 var(--ant, 0%),
+            color-mix(in srgb, var(--accent) 86%, black) var(--ant, 0%) var(--ago, 0%),
+            color-mix(in srgb, var(--accent) 16%, transparent) var(--ago, 0%));
+        -webkit-mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000);
+        -webkit-mask-composite: xor;
+        mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000);
+        mask-composite: exclude;
+        animation: rzBind 3.4s ease-in-out 0.9s 1 both;
+        animation-play-state: var(--sbm-anim, running);
+    }
+    @keyframes rzBind {
+        0%   { --ago: 0%;   --ant: 0%; }
+        44%  { --ago: 100%; --ant: 0%; }
+        56%  {
+            --ago: 100%; --ant: 0%;
+            animation-timing-function: ease-in-out;
+            animation-timing-function: linear(0, 0.04 14%, 0.11 27%, 0.24 40%, 0.48 53%, 0.72 66%, 0.88 79%, 0.97 91%, 1);
+        }
+        100% { --ago: 100%; --ant: 100%; }
+    }
+}
+
 /* Hero chips: an index strip, not pill soup */
 .chips {
     display: flex;
